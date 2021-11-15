@@ -13,6 +13,7 @@ public class Libro {
     private String autor;
     private String titulo;
     private int numeroPaginas;
+    private String numeroReferencia;
 
     /**
      * Fija el autor y el titulo del libro a los dados como parametro
@@ -22,6 +23,7 @@ public class Libro {
         autor = autorLibro;
         titulo = tituloLibro;
         numeroPaginas = numeroDePaginas;
+        numeroReferencia = "";
     }
     
     public String getAutor () {
@@ -33,11 +35,11 @@ public class Libro {
     }
     
     public void imprimeAutor(){
-        System.out.println(autor);
+        System.out.println(autor + " es el autor de este libro. ");
     }
     
     public void imprimeTitulo(){
-        System.out.println(titulo);
+        System.out.println(titulo + " es el título de este libro. ");
     }
     
     public int getNumeroDePaginas(){
@@ -45,16 +47,38 @@ public class Libro {
     }
     
     public void imprimeDetalles(){
-        System.out.println(" El titulo del libro seleccionado es " + titulo);
-        System.out.println(" El autor del libro seleccionado es " + autor);
-        System.out.println(" El libro seleccionado tiene " + numeroPaginas + " páginas. ");
+        /*String varDetalles;*/
+        if (numeroReferencia.length() < 3  ){
+            numeroReferencia = " zzz ";  
+        }
+        System.out.println( " El titulo del libro seleccionado es " + titulo + ". "       +"\n"+ 
+                            " El autor del libro seleccionado es " + autor + ". "          +"\n"+ 
+                            " El libro seleccionado tiene " + numeroPaginas + " páginas. "  +"\n"+
+                            " El numero de referencia de este libro es " + numeroReferencia + ". ");
+        /*System.out.println(varDetalles);*/
     }
     
     public String getDetalles(){
         String varDetalles;
-            varDetalles = " El titulo del libro seleccionado es " + titulo + 
+        if (numeroReferencia.length() < 3  ){
+            numeroReferencia = " zzz ";
+        }
+        varDetalles =   " El titulo del libro seleccionado es " + titulo + 
                         ". El autor del libro seleccionado es " + autor + 
-                        ". El libro seleccionado tiene " + numeroPaginas + " páginas. ";
+                        ". El libro seleccionado tiene " + numeroPaginas + " páginas. " +
+                        " El numero de referencia de este libro es " + numeroReferencia+ " . ";
         return varDetalles;
+    }
+    
+    public String getNumeroReferencia () {
+        return numeroReferencia;
+    }
+    
+    public void setNumeroReferencia(String numeroDeReferencia){
+        numeroReferencia = numeroDeReferencia;
+        if (numeroReferencia.length() < 3){
+            System.out.println ("[-]ERROR numero de referencia demasiado corto");
+        }
+        
     }
 }

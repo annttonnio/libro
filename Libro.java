@@ -96,9 +96,12 @@ public class Libro {
     }
     
     public void setNumeroReferencia(String numeroDeReferencia){
-        numeroReferencia = numeroDeReferencia;
-        if (numeroReferencia.length() < 3){
+        
+        if (numeroDeReferencia.length() < 3){
             System.out.println ("[-]ERROR numero de referencia demasiado corto");
+        }
+        else{
+            numeroReferencia = numeroDeReferencia;
         }
         
     }

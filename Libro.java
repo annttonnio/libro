@@ -14,6 +14,7 @@ public class Libro {
     private String titulo;
     private int numeroPaginas;
     private String numeroReferencia;
+    private int vecesPrestado;
 
     /**
      * Fija el autor y el titulo del libro a los dados como parametro
@@ -24,6 +25,7 @@ public class Libro {
         titulo = tituloLibro;
         numeroPaginas = numeroDePaginas;
         numeroReferencia = "";
+        vecesPrestado = 0;
     }
     
     public String getAutor () {
@@ -47,15 +49,14 @@ public class Libro {
     }
     
     public void imprimeDetalles(){
-        /*String varDetalles;*/
         if (numeroReferencia.length() < 3  ){
             numeroReferencia = " zzz ";  
         }
         System.out.println( " El titulo del libro seleccionado es " + titulo + ". "       +"\n"+ 
                             " El autor del libro seleccionado es " + autor + ". "          +"\n"+ 
                             " El libro seleccionado tiene " + numeroPaginas + " páginas. "  +"\n"+
-                            " El numero de referencia de este libro es " + numeroReferencia + ". ");
-        /*System.out.println(varDetalles);*/
+                            " El numero de referencia de este libro es " + numeroReferencia + ". "+"\n"+
+                            " El libro ha sido prestado "+vecesPrestado+ " veces ." );
     }
     
     public String getDetalles(){
@@ -66,7 +67,8 @@ public class Libro {
         varDetalles =   " El titulo del libro seleccionado es " + titulo + 
                         ". El autor del libro seleccionado es " + autor + 
                         ". El libro seleccionado tiene " + numeroPaginas + " páginas. " +
-                        " El numero de referencia de este libro es " + numeroReferencia+ " . ";
+                        " El numero de referencia de este libro es " + numeroReferencia+ " . "+
+                        " El libro ha sido prestado "+ vecesPrestado + " veces .";
         return varDetalles;
     }
     
@@ -80,5 +82,13 @@ public class Libro {
             System.out.println ("[-]ERROR numero de referencia demasiado corto");
         }
         
+    }
+    
+    public void prestar(){
+        vecesPrestado++;
+    }
+    
+    public int getVecesPrestado(){
+        return vecesPrestado;
     }
 }
